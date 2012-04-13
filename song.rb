@@ -18,10 +18,14 @@ end
 
 def play_song(song)
   song.each do |note_sleep|
-    play(note_sleep[0].to_i)
-    sleep(note_sleep[1]+0.2)
-    sleep 1
+    if note_sleep[0]
+      play(note_sleep[0].to_i)
+      sleep(note_sleep[1])
+    else
+      sleep(note_sleep[1])
+    end
   end
+  @subject.close
 end
 
 module One
@@ -87,7 +91,23 @@ end
   Two::E, 
   Two::E, 
   Two::D, 
-  Two::D
+  Two::D,
+  nil,
+  Two::E,
+  Two::E,
+  Two::F,
+  Two::G,
+  Two::G,
+  Two::F,
+  Two::E,
+  Two::D,
+  Two::C,
+  Two::C,
+  Two::D,
+  Two::E,
+  Two::D,
+  Two::C,
+  Two::C
 ]
 
 @test_song = [
@@ -97,6 +117,86 @@ end
 ]
 
 # play_song(@ode_to_joy.map { |note| [note, 0.5] })
-# play_song(@ode_to_joy2.map { |note| [note, 0.5] })
-#
-play_song(@test_song.map { |note| [note, 0.5] })
+# play_song(@ode_to_joy2.map { |note| [note, 0.4] })
+# play_song(@test_song.map { |note| [note, 0.5] })
+
+def play_note(key)
+  case key
+  when "a"
+    puts 'd'
+    play(One::D)
+  when "w"
+    puts 'eb'
+    play(One::E_FL)
+  when "s"
+    puts 'e'
+    play(One::E)
+  when "d"
+    puts 'f'
+    play(One::F)
+  when "r"
+    puts 'f#'
+    play(One::F_SH)
+  when "f"
+    puts 'g'
+    play(One::G)
+  when "t"
+    puts 'g#'
+    play(One::G_SH)
+  when "g"
+    puts 'a'
+    play(One::A)
+  when "y"
+    puts 'bb'
+    play(One::B_FL)
+  when "h"
+    puts 'b'
+    play(One::B)
+  when "j"
+    puts 'c'
+    play(Two::C)
+  when "i"
+    puts 'c#'
+    play(Two::C_SH)
+  when "k"
+    puts 'd'
+    play(Two::D)
+  when "i"
+    puts 'eb'
+    play(Two::E_FL)
+  when "l"
+    puts 'e'
+    play(Two::E)
+  when ";"
+    puts 'f'
+    play(Two::F)
+  when "["
+    puts 'f#'
+    play(Two::F_SH)
+  when "'"
+    puts 'g'
+    play(Two::G)
+  when "]"
+    puts 'g#'
+    play(Two::G_SH)
+  end
+end
+
+# @key = nil
+# while @key != 'q'
+  # @key = gets.chomp
+  # if @key && @key != 'q'
+    # play_note(@key)
+  # end
+# end
+
+system("stty raw -echo")
+@key = nil
+while @key != 'q'
+  @key = STDIN.getc
+  if @key && @key != 'q'
+    play_note(@key)
+    puts
+  end
+end
+system("stty -raw echo")
