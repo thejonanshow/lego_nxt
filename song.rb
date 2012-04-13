@@ -200,3 +200,4 @@ while @key != 'q'
   end
 end
 system("stty -raw echo")
+@subject.close
