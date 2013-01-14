@@ -4,19 +4,20 @@ require 'lego_nxt'
 include HighLine::SystemExtensions
 include LegoNXT::Notes
 
+puts `clear`
 puts
-puts "Play your LEGO piano with your keyboard! (esc to quit)"
+puts "     Play your LEGO piano with your keyboard! (esc to quit)"
 puts
-puts " ___________________________________________ "
-puts "|   w   e   r       y   u       o   p   [   |"
-puts "|   _   _   _       _   _       _   _   _   |"
-puts "|  | | | | | |  |  | | | |  |  | | | | | |  |"
-puts "|  | | | | | |  |  | | | |  |  | | | | | |  |"
-puts "|  |_| |_| |_|  |  |_| |_|  |  |_| |_| |_|  |"
-puts "|   |   |   |   |   |   |   |   |   |   |   |"
-puts "| F | G | A | B | C | D | E | F | G | A | B |"
-puts "|___|___|___|___|___|___|___|___|___|___|___|"
-puts "  a   s   d   f   g   h   j   k   l   ;   '  "
+puts "      ___________________________________________ "
+puts "     |   w   e   r       y   u       o   p   [   |"
+puts "     |   _   _   _       _   _       _   _   _   |"
+puts "     |  | | | | | |  |  | | | |  |  | | | | | |  |"
+puts "     |  | | | | | |  |  | | | |  |  | | | | | |  |"
+puts "     |  |_| |_| |_|  |  |_| |_|  |  |_| |_| |_|  |"
+puts "     |   |   |   |   |   |   |   |   |   |   |   |"
+puts "     | F | G | A | B | C | D | E | F | G | A | B |"
+puts "     |___|___|___|___|___|___|___|___|___|___|___|"
+puts "       a   s   d   f   g   h   j   k   l   ;   '  "
 puts
 
 brick = LegoNXT::connect
